@@ -28,18 +28,19 @@ fun createShortLink(link: String, domain: String, packageName: String?, listener
 }
 
 
-fun getDynamicLink(intent: Intent) {
+fun getDynamicLink(intent: Intent,listener: onGetDataListener) {
     FirebaseDynamicLinks.getInstance()
         .getDynamicLink(intent)
         .addOnSuccessListener { pendingDynamicLinkData -> // Get deep link from result (may be null if no link is found)
             var deepLink: Uri? = null
             if (pendingDynamicLinkData != null) {
                 deepLink = pendingDynamicLinkData.link
-                Log.d("DynamicLink", "onSuccess: $deepLink")
+                listener.onSuccess(deepLink)
             }
         }
-        .addOnFailureListener { e -> Log.w("DynamicLink", "getDynamicLink:onFailure", e) }
+        .addOnFailureListener { e -> listener.onFailure(e)}
 }
+
 
 fun shareLink(myDynamicLink: Uri?, linkMessage: String, context: Context) {
     val sendIntent = Intent()
