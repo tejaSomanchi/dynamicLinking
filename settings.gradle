@@ -1,0 +1,3 @@
+include ':dynamicLinking'
+include ':app'
+rootProject.name = "Appyhigh Utils - Dynamic Linking"
