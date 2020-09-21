@@ -9,7 +9,6 @@ import com.google.firebase.dynamiclinks.DynamicLink
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.firebase.dynamiclinks.ShortDynamicLink
 
-
 fun createShortLink(link: String, domain: String, packageName: String?, listener: onGetDataListener) {
     Log.d("DynamicLink", "$link $domain")
     val shortLinkTask: Task<ShortDynamicLink> =
