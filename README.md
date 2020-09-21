@@ -1,15 +1,25 @@
 # Dynamic Linking
 
-1.To import this library, Add the following line to your app level build.gradle file.
+1.To import this library, Add the following line to your project's *build.gradle* at the end of repositories.
 ```
-implementation 'com.github.PrasadVennamAppy:AppyhighUtils:{latestVersion}
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+```
+2.To import this library, Add the following line to your app level *build.gradle* file.
+```
+implementation 'com.github.tejaSomanchi:dynamicLinking:1.0.0
 
 ```
 
-2.Create a Domain Link in your linked firebase account to use Dynamic Linking
+3.Create a Domain Link in your linked firebase account to use Dynamic Linking
 
 
-3.To receive Dynamic Links, add the following intent-filter to your *AndroidManifest.xml* file
+4.To receive Dynamic Links, add the following intent-filter to your *AndroidManifest.xml* file
 
 ```
 <intent-filter>
@@ -22,13 +32,13 @@ implementation 'com.github.PrasadVennamAppy:AppyhighUtils:{latestVersion}
 </intent-filter>
 ```
 
-4.To create and share dynamic links that opens the link on your app, call the *createShortLink* method as shown
+5.To create and share dynamic links that opens the link on your app, call the *createShortLink* method as shown
 ```
 createShortLink(link: String, domain: String, packageName: String?, linkMessage: String, context: Context)
 
 ```
 
-5.To receive the deep link, call the *getDynamicLink* method as shown
+6.To receive the deep link, call the *getDynamicLink* method as shown
 ```
 getDynamicLink(intent: Intent):Uri?
 
